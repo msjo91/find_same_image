@@ -8,4 +8,4 @@ Image matching game
 Listed in requirements.txt
 
 ### Team Project
-Team 7
+Team 7 Big Data Platform FIRA SNU
