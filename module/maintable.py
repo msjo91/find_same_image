@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from imagebtn import *
 from tkinter import *
-from random import *
-import time
 
 
 class Maintable(Frame):
