@@ -3,9 +3,9 @@
 from tkinter import *
 
 
-class ImageButton(Button):    
-    def __init__(self, parent = None, **kw):
-        Button.__init__(self, parent, kw)        
+class ImageButton(Button):
+    def __init__(self, parent=None, **kw):
+        Button.__init__(self, parent, kw)
 
     # 해당 widget에 숨겨진 이미지 추가
     def add_hidden(self, alphabet, hidden):

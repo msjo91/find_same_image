@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from module.app import *
+from app import *
 
 
 def on_closing():
@@ -8,6 +8,7 @@ def on_closing():
     if messagebox.askokcancel("Quit", "Quit?"):
         root.quit()
         interrupt = 0
+
 
 if __name__ == "__main__":
     global interrupt
