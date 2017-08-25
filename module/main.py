@@ -21,5 +21,5 @@ if __name__ == "__main__":
         root.protocol("WM_DELETE_WINDOW", on_closing)
         root.mainloop()
         if app.continue_game == 0 or interrupt == 0:
+            root.destroy()
             break
-        root.destroy()
