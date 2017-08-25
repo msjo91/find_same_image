@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
-from maintable import *
-from conveyor import *
-from PIL import Image, ImageTk
 from tkinter import messagebox
-import sys
-import os
+
+from PIL import Image, ImageTk
+from maintable import *
+
+from module.conveyor import *
 
 
 class App(Frame):

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from app import *
+from module.app import *
 
 
 def on_closing():
