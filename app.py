@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
 
+from tkinter import *
 from maintable import *
 from conveyor import *
-from PIL import Image, ImageTk
-from tkinter import messagebox
-import sys
-import os
+from PIL import Image,ImageTk
 
 
 class App(Frame):
@@ -51,6 +49,3 @@ class App(Frame):
         self.conveyor.quit()
         self.table.quit()
         self.quit()
-
-
-        

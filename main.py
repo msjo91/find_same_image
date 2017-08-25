@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
+from tkinter import *
+from tkinter import messagebox
 from app import *
-
 
 def on_closing():
     global interrupt
@@ -16,9 +17,10 @@ if __name__ == "__main__":
     root = Tk()
 
     while True:
-        app = App(root, width)
+        app = App(root,width)
         root.protocol("WM_DELETE_WINDOW", on_closing)
         root.mainloop()
         if app.continue_game == 0 or interrupt == 0:
+            root.destroy()
             break
-        root.destroy()
+
