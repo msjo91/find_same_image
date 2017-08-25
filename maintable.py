@@ -24,16 +24,21 @@ class Maintable(Frame):
         # TODO
         # ImageButton widget 생성하고 각 widget에 숨겨진 이미지 추가
         # 이미지 클릭시 이벤트 bind
+        buttons = []
         for i in range(0,self.width):
             for j in range(0,self.width):
-                pass
-
+                n = i*self.width + j
+                buttons.append(ImageButton(parent = self))
+                buttons[-1].add_hidden(alphabet[n], self.picture[self.image_number_list[n]])
+                buttons[-1]['image'] = buttons[-1].alphabet
+                buttons[-1].bind('<Button-1>', self.show_hidden)
+                buttons[-1].grid(column = i, row = j)
 
 
     # TODO
     # hidden 이미지 셔플링
     def random_shuffle(self):
-        print('random')
+        self.image_number_list = sample(range(16), 16)
     # 선택된 알파벳 ImageButton의 숨겨진 이미지 출력
     def show_hidden(self, event):
         event.widget.config(image=event.widget.get_hidden())
@@ -42,9 +47,9 @@ class Maintable(Frame):
     # 숨겨진 이미지 숨기고 알파벳 이미지로 변환
     # 선택된 이미지와 컨베이어의 현재 이미지와 비교하고, 비교 결과에 따른 명령어 실행 부분
     def hide_picture(self, event):
-        #time.sleep(10)
-        #time.sleep(1.5)
-        selected_image = self.picture.index(event.widget.hidden)
+        # time.sleep(3)
+        # selected_image = self.picture.index(event.widget.hidden)
+        pass
 
         
         

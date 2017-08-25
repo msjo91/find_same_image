@@ -24,7 +24,8 @@ class Conveyor(Frame):
         # TODO
         # 셔플 결과대로 이미지 label 생성하여 리스트에 저장
         for i in range(0, self.n):
-            pass
+            self.labels.append(Label(self, image = self.picture[self.image_number_list[i]]))
+            self.labels[-1].pack(side = LEFT)
 
 
 
@@ -44,14 +45,14 @@ class Conveyor(Frame):
     # 이미지 셔플 함수
     def random_shuffle(self):
         # 0~15 숫자 중 임의로 중복되지 않는 13개의 숫자 선택
-        pass
+        self.image_number_list = sample(range(16), 13)
 
     # TODO
     # 선택한 그림이 현재 위치의 그림과 일치하는 경우
     def correct_match(self):
         # 마지막 이미지를 찾은 경우
         if self.cur_idx == self.n-1:
-            pass
+            self.master.quit_game(True)
         # 캔버스 위젯
         # 현재 위치 표시 도형 우측 이동
         # 현재 이미지 및 현재 위치 재설정
@@ -96,9 +97,9 @@ class Conveyor(Frame):
             # 기존 이미지 좌측으로 한 칸씩 이동
             # label.config(parameter = configuration) 기존의 label 위젯 변경 가능
             for i in range(0,self.n-1):
-                self.labels[i].config(image=self.picture[self.image_number_list [i+1]])
-                self.image_number_list [i] = self.image_number_list [i+1]
+                self.labels[i].config(image=self.picture[self.image_number_list[i+1]])
+                self.image_number_list[i] = self.image_number_list[i+1]
 
             # 새 이미지 추가
             self.image_number_list[self.n-1] = new_image
-            self.labels[self.n-1].config(image=self.picture[self.image_number_list [self.n-1]])
+            self.labels[self.n-1].config(image=self.picture[self.image_number_list[self.n-1]])
