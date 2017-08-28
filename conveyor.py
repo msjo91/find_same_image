@@ -3,7 +3,6 @@ from tkinter import *
 import random
 from app import *
 from main import *
-import random
 
 class Conveyor(Frame):
     def __init__(self, master, picture, width):
@@ -15,15 +14,6 @@ class Conveyor(Frame):
         self.n = width*(width-1)+1 # 컨베이어에 넣을 이미지의 수. = 13
         self.picture = picture # app에서 생성한 이미지 받아와서 저장
         self.image_flags = list(False for i in range(self.width*self.width)) # 이미지가 컨베이어에 올라갔는지 아닌지 체크하기 위한 리스트. 초기 세팅은 모두 FALSE.
-
-        self.conveyor_canvas2 = Canvas(self, width=35, height=30)
-        self.label = self.conveyor_canvas2.create_text(20,15,text='Final', fill='Red', font='Helvetica 11 bold')
-        self.conveyor_canvas2.grid(row=0, column=12)
-
-        self.conveyor_canvas = Canvas(self,width=30,height=30) # 현재 위치 표시를 위한 캔버스 위젯 생성
-        self.conveyor_canvas.create_polygon((0, 5), (30, 5), (15, 20), fill='yellow', outline='black')
-        self.conveyor_canvas.grid(row=0, column=9)
-
 
         # 컨베이어에 올릴 이미지 셔플링
         self.random_shuffle()
@@ -46,6 +36,12 @@ class Conveyor(Frame):
 
         # TODO
         # 캔버스 세팅
+        self.conveyor_canvas = Canvas(self,width=30,height=30) # 현재 위치 표시를 위한 캔버스 위젯 생성
+        self.conveyor_canvas.create_polygon((0, 5), (30, 5), (15, 20), fill='yellow', outline='black')
+        self.conveyor_canvas.grid(row=0, column=9)
+        self.conveyor_canvas2 = Canvas(self, width=35, height=30)
+        self.label = self.conveyor_canvas2.create_text(20,15,text='Final', fill='Red', font='Helvetica 11 bold')
+        self.conveyor_canvas2.grid(row=0, column=12)
 
 
     # TODO
