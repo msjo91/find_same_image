@@ -9,13 +9,13 @@ class ImageButton(Button):
     """
 
     def __init__(self, parent=None, **kwargs):
-        super().__init__(self, parent, kwargs)
+        Button.__init__(self, parent, **kwargs)
 
-    # Add hidden image in the widget
     def add_hidden(self, alphabet, hidden):
+        """Add hidden image in the widget"""
         self.alphabet = alphabet
         self.hidden = hidden
 
-    # Return the widget's hidden image
     def get_hidden(self):
+        """Return the widget's hidden image"""
         return self.hidden
