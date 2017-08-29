@@ -39,7 +39,7 @@ class Maintable(Frame):
     # TODO
     def random_shuffle(self):
         """Create a list of shuffled self.picture indices."""
-        self.image_number_list = sample(range(self.n))
+        self.image_number_list = sample(range(self.n), self.n)
 
     def show_hidden(self, event):
         """Event handler: show hidden image"""
