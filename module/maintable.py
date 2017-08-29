@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from random import sample
-from time import sleep
 
 from app import *
 from imagebtn import ImageButton
