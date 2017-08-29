@@ -47,11 +47,11 @@ class App(Frame):
     def quit_game(self, win):
         """Either win or lose the game; then call continue box."""
         if win is True:
-            messagebox.showinfo("게임 종료", "성공하였습니다")
+            messagebox.showinfo("Game Over", "Success! You win!")
         else:
-            messagebox.showinfo("게임 종료", "실패하였습니다")
+            messagebox.showinfo("Game Over", "Failed. You lost.")
 
-        result = messagebox.askquestion("다시 시작", "다시 시작하시겠습니까?", icon='warning')
+        result = messagebox.askquestion("Restart", "Restart the game?", icon='warning')
         if result == 'no':
             App.continue_game = 0
 
