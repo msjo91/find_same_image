@@ -62,6 +62,7 @@ class Maintable(Frame):
             self.master.conveyor.wrong_match()
 
     def click_event(self):
+        """Event handler: Combine two events with a 3-second term."""
         self.show_hidden()
         self.after(300)
         self.hide_picture()
