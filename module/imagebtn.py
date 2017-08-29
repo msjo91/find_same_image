@@ -1,17 +1,21 @@
 # -*- coding: utf-8 -*-
-
-from tkinter import *
+from tkinter import Button
 
 
 class ImageButton(Button):
-    def __init__(self, parent=None, **kw):
-        Button.__init__(self, parent, kw)
+    """
+    A blueprint for button to grid on the main table.
+    The button will have an alphabet on front and a picture hidden.
+    """
 
-    # 해당 widget에 숨겨진 이미지 추가
+    def __init__(self, parent=None, **kwargs):
+        super().__init__(self, parent, kwargs)
+
+    # Add hidden image in the widget
     def add_hidden(self, alphabet, hidden):
         self.alphabet = alphabet
         self.hidden = hidden
 
-    # 해당 widget의 숨겨진 이미지 값 return
+    # Return the widget's hidden image
     def get_hidden(self):
         return self.hidden
