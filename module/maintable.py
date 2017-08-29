@@ -32,9 +32,9 @@ class Maintable(Frame):
                 # Add hidden image
                 btn_list[-1].add_hidden(
                     alphabet=self.alphabet[idx],
-                    picture=self.picture[idx])
+                    hidden=self.picture[idx])
                 # Bind click event
-                btn_list[-1].bind('<ButtonPress-1>', self.click_event)
+                btn_list[-1].bind('<Button-1>', self.click_event)
 
     # TODO
     def random_shuffle(self):
@@ -55,13 +55,14 @@ class Maintable(Frame):
         """
         selected_image = self.picture.index(event.widget.hidden)
         event.widget.config(image=event.widget.alphabet)
-        if selected_image == self.master.conveyor.image_number_list[self.master.conveyor.cur_idx]:
+        if selected_image == self.master.conveyor.cur_image:
             self.master.conveyor.correct_match()
         else:
             self.master.conveyor.wrong_match()
 
-    def click_event(self):
-        """Event handler: Combine two events with a 3-second term."""
-        self.show_hidden()
-        self.after(300)
-        self.hide_picture()
+    def click_event(self, event):
+        """Combined Event handler: Combine two events with a 1-second term."""
+        self.show_hidden(event)
+        self.update()
+        self.after(100)
+        self.hide_picture(event)
