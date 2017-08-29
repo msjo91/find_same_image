@@ -73,9 +73,8 @@ class Conveyor(Frame):
             else:
                 self.cur_idx += 1
                 self.cur_image = self.picture.index(self.picture[self.image_number_list[self.cur_idx]])
-                self.canvas_marker.grid(row=0, column=self.cur_idx)
+                self.canvas_marker.grid(row=0, column=self.cur_idx)  # TODO
 
-    # TODO
     def wrong_match(self):
         """When selected image and conveyor image are not a match"""
         # When it was the first image
@@ -90,17 +89,17 @@ class Conveyor(Frame):
                 self.cur_idx -= 1
                 self.canvas_marker.grid(row=0, column=self.cur_idx)
 
-            # Get new image
-            while True:
-                new_image = randint(0, self.width * self.width - 1)
-                if new_image not in self.image_number_list:
-                    break
+        # Get new image
+        while True:
+            new_image = randint(0, self.width * self.width - 1)
+            if new_image not in self.image_number_list:
+                break
 
-            # Move image to left
-            for i in range(0, self.n - 1):
-                self.labels[i].config(image=self.picture[self.image_number_list[i + 1]])
-                self.image_number_list[i] = self.image_number_list[i + 1]
+        # Move image to left
+        for i in range(0, self.n - 1):
+            self.labels[i].config(image=self.picture[self.image_number_list[i + 1]])
+            self.image_number_list[i] = self.image_number_list[i + 1]
 
-            # Add new image to conveyor
-            self.image_number_list[self.n - 1] = new_image
-            self.labels[self.n - 1].config(image=self.picture[self.image_number_list[self.n - 1]])
+        # Add new image to conveyor
+        self.image_number_list[self.n - 1] = new_image
+        self.labels[self.n - 1].config(image=self.picture[self.image_number_list[self.n - 1]])
