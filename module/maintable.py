@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
+from random import sample
+from time import sleep
 
-from tkinter import *
+from app import *
+from imagebtn import ImageButton
 
 
 class Maintable(Frame):
@@ -8,36 +11,57 @@ class Maintable(Frame):
     selected_image = 0
 
     def __init__(self, master, picture, alphabet, width):
-        super(Maintable, self).__init__()
-        self.image_number_list = []  # 셔플된 이미지의 번호를 저장하기 위한 리스트. 16개
-        self.master = master  # maintable frame의 parent 설정
-        self.width = width  # maintable의 넓이. = 4
-        self.n = width * width  # maintable에 추가될 이미지 수. = 16
-        self.picture = picture  # # app에서 생성한 이미지 받아와서 저장
+        super().__init__()
+        self.master = master  # App is parent
+        self.picture = picture  # App.picture_image
+        self.alphabet = alphabet  # App.alphabet_image
+        self.width = width  # Width of main table = 4
+        self.n = width * width  # Number of images to be used in main table = 16
+        self.image_number_list = []  # Index list after shuffling App.picture_image
 
-        # 숨겨진 이미지 셔플링
+        # Shuffle App.picture_image (= hidden image)
         self.random_shuffle()
 
         # TODO
-        # ImageButton widget 생성하고 각 widget에 숨겨진 이미지 추가
-        # 이미지 클릭시 이벤트 bind
-        for i in range(0, self.width):
-            for j in range(0, self.width):
-                pass
+        # Create ImageButton widget with alphabet image
+        btn_list = []
+        for i in range(self.width):
+            for j in range(self.width):
+                idx = self.image_number_list.pop()
+                btn_list.append(ImageButton(self, image=self.alphabet[idx]))
+                btn_list[-1].grid(row=i, column=j)
+                # Add hidden image
+                btn_list[-1].add_hidden(
+                    alphabet=self.alphabet[idx],
+                    picture=self.picture[idx])
+                # Bind click event
+                btn_list[-1].bind('<ButtonPress-1>', self.click_event)
 
     # TODO
-    # hidden 이미지 셔플링
     def random_shuffle(self):
-        print('random')
+        """Create a list of shuffled self.picture indices."""
+        self.image_number_list = sample(range(self.n))
 
-    # 선택된 알파벳 ImageButton의 숨겨진 이미지 출력
     def show_hidden(self, event):
+        """Event handler: show hidden image"""
         event.widget.config(image=event.widget.get_hidden())
 
     # TODO
-    # 숨겨진 이미지 숨기고 알파벳 이미지로 변환
-    # 선택된 이미지와 컨베이어의 현재 이미지와 비교하고, 비교 결과에 따른 명령어 실행 부분
     def hide_picture(self, event):
-        # time.sleep(10)
-        # time.sleep(1.5)
+        """
+        Event handler:
+        1. Hide hidden image and recall alphabet.
+        2. Compare the selected image with the current conveyor image.
+        3. Run appropriate function according to match result.
+        """
         selected_image = self.picture.index(event.widget.hidden)
+        event.widget.config(image=event.widget.alphabet)
+        if selected_image == self.master.conveyor.image_number_list[self.master.conveyor.cur_idx]:
+            self.master.conveyor.correct_match()
+        else:
+            self.master.conveyor.wrong_match()
+
+    def click_event(self):
+        self.show_hidden()
+        self.after(300)
+        self.hide_picture()
