@@ -69,7 +69,7 @@ class Conveyor(Frame):
             else:
                 self.cur_idx += 1
                 self.cur_image = self.picture.index(self.picture[self.image_number_list[self.cur_idx]])
-                self.canvas_marker.grid(row=0, column=self.cur_idx)  # TODO
+                self.canvas_marker.grid(row=0, column=self.cur_idx)
 
     def wrong_match(self):
         """When selected image and conveyor image are not a match"""
