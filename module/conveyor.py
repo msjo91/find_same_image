@@ -79,7 +79,6 @@ class Conveyor(Frame):
         else:
             if self.cur_idx == self.n - 1:
                 self.cur_idx -= 1
-                self.cur_image = self.picture.index(self.picture[self.image_number_list[self.cur_idx]])
                 self.canvas_marker.grid(row=0, column=self.cur_idx)
             else:
                 self.cur_idx -= 1
