@@ -21,7 +21,6 @@ class Maintable(Frame):
         # Shuffle App.picture_image (= hidden image)
         self.random_shuffle()
 
-        # TODO
         # Create ImageButton widget with alphabet image
         btn_list = []
         for i in range(self.width):
@@ -36,7 +35,6 @@ class Maintable(Frame):
                 # Bind click event
                 btn_list[-1].bind('<Button-1>', self.click_event)
 
-    # TODO
     def random_shuffle(self):
         """Create a list of shuffled self.picture indices."""
         self.image_number_list = sample(range(self.n), self.n)
@@ -45,7 +43,6 @@ class Maintable(Frame):
         """Event handler: show hidden image"""
         event.widget.config(image=event.widget.get_hidden())
 
-    # TODO
     def hide_picture(self, event):
         """
         Event handler:
