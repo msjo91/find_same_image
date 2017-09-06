@@ -21,7 +21,6 @@ class Conveyor(Frame):
         # Shuffle self.picture (= App.resized_picture)
         self.random_shuffle()
 
-        # TODO
         # Create image labels.
         for i in range(self.n):
             pic_label = Label(self, image=self.picture[self.image_number_list[i]])
@@ -39,7 +38,6 @@ class Conveyor(Frame):
         # Assign to compare with selected image on the main table.
         self.cur_image = self.picture.index(self.picture[self.image_number_list[self.cur_idx]])
 
-        # TODO
         # Set canvas.
         # Create canvas widget for index marker.
         self.canvas_marker = Canvas(self, width=30, height=30)
@@ -54,12 +52,10 @@ class Conveyor(Frame):
         # Grid canvas.
         self.canvas_text.grid(row=0, column=12)
 
-    # TODO
     def random_shuffle(self):
         """Create a list of shuffled indices of self.picture."""
         self.image_number_list = sample(range(self.width * self.width), self.n)
 
-    # TODO
     def correct_match(self):
         """When selected image and conveyor image are a match"""
         # When it was the last image
@@ -75,7 +71,6 @@ class Conveyor(Frame):
                 self.cur_image = self.picture.index(self.picture[self.image_number_list[self.cur_idx]])
                 self.canvas_marker.grid(row=0, column=self.cur_idx)
 
-    # TODO
     def wrong_match(self):
         """When selected image and conveyor image are not a match"""
         # When it was the first image
